@@ -1,14 +1,14 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Rapidez\QuickOrder;
 
 use Illuminate\Support\ServiceProvider;
 
-class SkeletonServiceProvider extends ServiceProvider
+class QuickOrderServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/rapidez/:package_slug_without_prefix.php', 'rapidez.:package_slug_without_prefix');
+        $this->mergeConfigFrom(__DIR__.'/../config/rapidez/quick-order.php', 'rapidez.quick-order');
     }
 
     public function boot()
@@ -30,7 +30,7 @@ class SkeletonServiceProvider extends ServiceProvider
 
     public function bootViews() : self
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'rapidez-:package_slug_without_prefix');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'rapidez-quick-order');
 
         return $this;
     }
@@ -38,12 +38,12 @@ class SkeletonServiceProvider extends ServiceProvider
     public function bootPublishables() : self
     {
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/rapidez-:package_slug_without_prefix'),
-        ], 'rapidez-:package_slug_without_prefix-views');
+            __DIR__.'/../resources/views' => resource_path('views/vendor/rapidez-quick-order'),
+        ], 'rapidez-quick-order-views');
 
         $this->publishes([
-            __DIR__.'/../config/rapidez/:package_slug_without_prefix.php' => config_path('rapidez/:package_slug_without_prefix.php'),
-        ], 'rapidez-:package_slug_without_prefix-config');
+            __DIR__.'/../config/rapidez/quick-order.php' => config_path('rapidez/quick-order.php'),
+        ], 'rapidez-quick-order-config');
 
         return $this;
     }
