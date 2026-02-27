@@ -3,6 +3,9 @@
         @{{ error }}
     </div>
     <div class="flex gap-2">
+        <button class="mt-auto h-12 py-2" v-on:click="quickOrder.delete(productId)">
+            <x-heroicon-o-x-mark class="size-full text-danger"/>
+        </button>
         <label>
             <x-rapidez::label>@lang('SKU')</x-rapidez::label>
             <x-rapidez::input
@@ -30,7 +33,6 @@
         </template>
         <x-rapidez::button.conversion
             class="mt-auto"
-            type="button"
             v-on:click="quickOrder.addOneToCart(productId)"
             v-bind:class="{'button-loading': quickOrder.adding.includes(productId)}"
             v-bind:disabled="quickOrder.errors(productId).length > 0 || quickOrder.adding.includes(productId)"

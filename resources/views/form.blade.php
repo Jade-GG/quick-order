@@ -8,7 +8,7 @@
                     @include('rapidez-quick-order::partials.product-line')
                 </template>
                 <div class="flex">
-                    <x-rapidez::button.outline type="button" v-on:click="quickOrder.newProduct()">
+                    <x-rapidez::button.outline v-on:click="quickOrder.newProduct()">
                         @lang('New line')
                     </x-rapidez::button.outline>
                     <x-rapidez::button.conversion

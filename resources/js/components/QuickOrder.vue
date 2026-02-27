@@ -44,6 +44,16 @@ export default {
             return Math.random().toString(16).substring(2, 10)
         },
 
+        deleteProduct(id) {
+            if ((!id in this.products)) {
+                return
+            }
+
+            delete this.products[id]
+            delete this.enteredOptions[id]
+            this.productCount--
+        },
+
         async importCSV(event) {
             let csv = await event.target.files[0].text();
             this.fileName = event.target.files[0].name;
