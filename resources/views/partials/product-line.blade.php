@@ -7,7 +7,7 @@
             <x-heroicon-o-x-mark class="size-full text-danger"/>
         </button>
         <label>
-            <x-rapidez::label>@lang('SKU')</x-rapidez::label>
+            <x-rapidez::label>SKU</x-rapidez::label>
             <x-rapidez::input
                 name="sku"
                 required
