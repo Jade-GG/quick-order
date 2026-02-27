@@ -32,7 +32,7 @@ class QuickOrderServiceProvider extends ServiceProvider
 
     public function bootTranslations() : self
     {
-        $this->loadTranslationsFrom(__DIR__.'/../lang', 'rapidez-quick-order');
+        $this->loadJsonTranslationsFrom(__DIR__.'/../lang', 'rapidez-quick-order');
 
         return $this;
     }
