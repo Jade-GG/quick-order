@@ -2,7 +2,9 @@
 
 namespace Rapidez\QuickOrder;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Rapidez\QuickOrder\Http\ViewComposers\ConfigComposer;
 
 class QuickOrderServiceProvider extends ServiceProvider
 {
@@ -14,15 +16,29 @@ class QuickOrderServiceProvider extends ServiceProvider
     public function boot()
     {
         $this
+            ->bootComposers()
             ->bootRoutes()
+            ->bootTranslations()
             ->bootViews()
-            ->bootPublishables()
-            ->bootFilters();
+            ->bootPublishables();
+    }
+
+    protected function bootComposers(): static
+    {
+        View::composer('rapidez::layouts.app', ConfigComposer::class);
+
+        return $this;
+    }
+
+    public function bootTranslations() : self
+    {
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'rapidez-quick-order');
+
+        return $this;
     }
 
     public function bootRoutes() : self
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
         return $this;
@@ -46,19 +62,5 @@ class QuickOrderServiceProvider extends ServiceProvider
         ], 'rapidez-quick-order-config');
 
         return $this;
-    }
-
-    public function bootFilters() : self
-    {
-        Eventy::addFilter('index.product.data', function ($data) {
-            // Manipulate the data
-            return $data;
-        });
-
-        Eventy::addFilter('index.product.mapping', fn ($mapping) => array_merge_recursive($mapping ?: [], [
-            'properties' => [
-                // Additional mappings
-            ],
-        ]));
     }
 }
