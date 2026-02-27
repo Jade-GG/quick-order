@@ -10,6 +10,7 @@ export default {
             enteredOptions: {},
             adding: [],
             fetching: false,
+            fileName: '',
         }
     },
 
@@ -57,16 +58,16 @@ export default {
                         return;
                     }
 
-                    let columns = line.split(/[;,]/);
+                    let columns = line.split(/[;,]/).map(this.stripQuotes);
 
-                    if(columns.length < 2 || isNaN(this.stripQuotes(columns[1]))) {
+                    if(columns.length < 2 || isNaN(columns[1])) {
                         return;
                     }
 
                     this.newProduct(
-                        this.stripQuotes(columns[0]),
-                        this.stripQuotes(columns[1]),
-                        { ...columns.slice(2).map(this.stripQuotes) },
+                        columns[0],
+                        columns[1],
+                        { ...columns.slice(2) },
                     );
                 })
             );
@@ -75,6 +76,10 @@ export default {
 
             event.target.value = "";
             Notify(window.config.translations.orderlist.csv_success, 'success');
+        },
+
+        stripQuotes(string) {
+            return (string ?? '').replace(/['"]+/g, "");
         },
 
         errors(id) {
