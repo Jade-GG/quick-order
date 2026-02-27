@@ -83,6 +83,10 @@ export default {
         },
 
         errors(id) {
+            if (this.fetching) {
+                return []
+            }
+
             let errors = []
 
             if (!(id in this.products) || (this.products[id].sku && !(id in this.productMatches))) {

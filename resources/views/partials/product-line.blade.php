@@ -13,12 +13,6 @@
                 v-on:change="(event) => quickOrder.updateProduct(productId, event.target.value)"
             />
         </label>
-        <template v-if="quickOrder.productMatches?.[productId]?.image?.url">
-            <img
-                class="size-12 mt-auto"
-                v-bind:src="resizedPath(quickOrder.productMatches[productId].image.url + '.webp', '80x80')"
-            >
-        </template>
         <label>
             <x-rapidez::label>@lang('Quantity')</x-rapidez::label>
             <x-rapidez::input type="number" name="quantity" v-model.lazy="product.quantity" required/>
