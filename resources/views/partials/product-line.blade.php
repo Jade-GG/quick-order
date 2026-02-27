@@ -3,7 +3,7 @@
         @{{ error }}
     </div>
     <div class="flex gap-2">
-        <button class="mt-auto h-12 py-2" v-on:click="quickOrder.delete(productId)">
+        <button class="mt-auto h-12 py-2" v-on:click="quickOrder.deleteProduct(productId)">
             <x-heroicon-o-x-mark class="size-full text-danger"/>
         </button>
         <label>
