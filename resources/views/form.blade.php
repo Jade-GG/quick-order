@@ -29,9 +29,7 @@
                 />
                 <div v-if="!quickOrder.fileName">@lang('Upload CSV')</div>
                 <div v-else v-cloak>
-                    @lang('File'): @{{ quickOrder.fileName }}
-                    <br>
-                    @lang('has been successfully uploaded')
+                    @lang('File :file has been successfully uploaded', ['file' => '@{{ quickOrder.fileName }}'])
                 </div>
             </div>
         </div>

@@ -1,7 +1,9 @@
 {
     "Add all to cart": "Alles toevoegen aan winkelwagen",
     "Added to cart": "Toegevoegd aan winkelwagen",
+    "File :file has been successfully uploaded": "Bestand :file is succesvol geüpload",
     "New line": "Nieuwe regel",
     "Please choose a child product": "Selecteer een sub-product",
-    "Product does not exist": "Product bestaat niet"
+    "Product does not exist": "Product bestaat niet",
+    "Upload CSV": "Upload CSV"
 }
